@@ -1,0 +1,34 @@
+profile: hil
+sample_time_ms: 10.0
+model_path: "models/ev_controller/EV_Controller_HIL.xil"
+
+backend_settings:
+  mock_mode: true  # Emulates CAN bus network & ECU firmware timing if physical hardware is absent
+  can_channel: "vcan0"
+  can_bustype: "virtual"
+  can_bitrate: 500000
+  max_torque_nm: 350.0
+  communication_delay_ms: 2.0
+  interlock_active_high: true
+
+maport:
+  Throttle_Input: "Speedgoat/Plant/Pedal_Position"
+  Brake_Interlock: "Speedgoat/Plant/HV_Interlock_Pin"
+
+network_port:
+  VehicleSpeed_CAN: "CAN1/Msg0x200/VehicleSpeed"
+  TorqueRequest_CAN: "CAN1/Msg0x200/TorqueRequest"
+
+ecu_port:
+  ECU_State: "ECU/OperatingState"
+  ECU_DiagnosticStatus: "ECU/DTC_Status"
+
+signals:
+  Throttle_Input: "Speedgoat/Plant/Pedal_Position"
+  Brake_Interlock: "Speedgoat/Plant/HV_Interlock_Pin"
+  Motor_Torque: "CAN1/Msg0x200/TorqueRequest"
+  Vehicle_Speed: "CAN1/Msg0x200/VehicleSpeed"
+  VehicleSpeed_CAN: "CAN1/Msg0x200/VehicleSpeed"
+  TorqueRequest_CAN: "CAN1/Msg0x200/TorqueRequest"
+  ECU_State: "ECU/OperatingState"
+  ECU_DiagnosticStatus: "ECU/DTC_Status"

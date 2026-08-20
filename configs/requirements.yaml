@@ -1,0 +1,40 @@
+requirements:
+  acceleration:
+    id: "EV-REQ-001"
+    title: "Vehicle Acceleration Capability"
+    description: "Vehicle shall reach 40 km/h within 5 seconds under nominal drive enable"
+    signal: "Vehicle_Speed"
+    operator: ">="
+    value: 40.0
+    unit: "km/h"
+    timeout_sec: 5.0
+    asil: "ASIL-B"
+
+  drive_interlock:
+    id: "EV-REQ-002"
+    title: "High Voltage Drive Interlock Safety"
+    description: "Torque shall remain zero when safety drive interlock is disabled"
+    signal: "Motor_Torque"
+    operator: "=="
+    value: 0.0
+    unit: "Nm"
+    timeout_sec: 0.1
+    asil: "ASIL-D"
+
+  zero_throttle:
+    id: "EV-REQ-003"
+    title: "Zero Throttle Coasting"
+    description: "Torque command must be zero when accelerator pedal is at 0%"
+    signal: "Motor_Torque"
+    operator: "=="
+    value: 0.0
+    unit: "Nm"
+    timeout_sec: 0.1
+    asil: "QM"
+
+equivalence:
+  speed:
+    reference: "MIL"
+    candidate: "SIL"
+    tolerance: 0.5
+    unit: "km/h"

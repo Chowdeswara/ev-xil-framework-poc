@@ -1,0 +1,14 @@
+profile: mil
+sample_time_ms: 10.0
+model_path: "models/ev_controller/EV_Controller.slx"
+
+backend_settings:
+  mock_mode: false # Auto-switches to mock if MATLAB Engine is not installed
+  max_torque_nm: 350.0
+  interlock_active_high: true
+
+signals:
+  Throttle_Input: "EV_Controller/Throttle_Pedal_In"
+  Brake_Interlock: "EV_Controller/HV_Interlock_State"
+  Motor_Torque: "EV_Controller/Target_Torque_Out"
+  Vehicle_Speed: "EV_Plant/Vehicle_Speed_Kmh"

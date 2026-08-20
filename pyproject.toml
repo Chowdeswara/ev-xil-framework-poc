@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ev-xil"
+version = "0.1.0"
+description = "Automotive EV X-in-the-Loop (XiL) Automation Test Framework"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pytest>=7.0.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.0.0",
+    "numpy>=1.20.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-v"
+markers = [
+    "equivalence: Back-to-Back equivalence test cases between execution profiles",
+    "hil: Hardware-in-the-Loop test profile execution suite",
+    "vil: Vehicle-in-the-Loop test profile execution suite",
+]

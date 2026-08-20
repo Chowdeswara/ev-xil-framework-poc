@@ -1,0 +1,27 @@
+profile: vil
+sample_time_ms: 10.0
+model_path: "models/ev_controller/Vehicle_Gateway.dbc"
+
+backend_settings:
+  mock_mode: true  # Emulates full vehicle dynamics (curb weight, aerodynamic drag, rolling resistance)
+  curb_mass_kg: 1600.0
+  wheel_radius_m: 0.32
+  drag_coefficient: 0.28
+  frontal_area_m2: 2.2
+  air_density: 1.225
+  rolling_resistance_cr: 0.015
+  max_torque_nm: 350.0
+  interlock_active_high: true
+
+signals:
+  Throttle_Input: "CAN/GW_0x100/Throttle_Pedal"
+  Brake_Interlock: "CAN/GW_0x100/Interlock_State"
+  Motor_Torque: "CAN/GW_0x200/Motor_Torque"
+  Vehicle_Speed: "DAQ/WheelSpeed_Kmh"
+  GNSS_Speed: "DAQ/GNSS_Velocity_Kmh"
+  Diagnostic_Fault: "DIAG/DTC_Count"
+  Torque_Fault: "DIAG/Torque_Plausibility_Fault"
+  Gateway_ADAS_Pedal_Command: "CAN/GW_0x100/Throttle_Pedal"
+  Gateway_Safety_Interlock_Status: "CAN/GW_0x100/Interlock_State"
+  Powertrain_Telemetry_Torque_Feedback: "CAN/GW_0x200/Motor_Torque"
+  WheelSpeed_Telemetry_Average_Kmh: "DAQ/WheelSpeed_Kmh"
