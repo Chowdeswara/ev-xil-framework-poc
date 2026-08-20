@@ -13,6 +13,13 @@ class SignalRecorder:
         self.signals: Dict[str, List[float]] = {}
         self._start_time: float = 0.0
 
+    @property
+    def current_time_ms(self) -> float:
+        """Returns elapsed recording time in milliseconds."""
+        if self._start_time == 0.0:
+            return 0.0
+        return (time.time() - self._start_time) * 1000.0
+
     def start(self) -> None:
         """Starts timeseries recording and resets buffers."""
         self.clear()

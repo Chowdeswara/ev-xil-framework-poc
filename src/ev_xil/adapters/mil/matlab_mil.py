@@ -67,10 +67,10 @@ class StatefulMockEngine:
         self.simulation_time_ms += duration_ms
         self._update_physics()
 
-        # Update Vehicle Speed / RPM based on motor torque
-        t_val = self.signals["torque"]
-        speed_increment = (t_val / 100.0) * (duration_ms / 10.0)
-        new_speed = max(0.0, self.signals["speed"] + speed_increment)
+        # Simple vehicle physics model: Speed = Speed + (Torque/100) * (dt/10)
+        torque = self.signals["torque"]
+        speed_inc = (torque / 100.0) * (duration_ms / 10.0)
+        new_speed = max(0.0, self.signals["speed"] + speed_inc)
         self.signals["speed"] = new_speed
         self.signals["Vehicle_Speed"] = new_speed
         self.signals["motor_speed_rpm"] = new_speed * 60.0
@@ -95,7 +95,7 @@ class StatefulMockEngine:
 
 
 class MatlabMILPlatform(TestPlatform):
-    """MIL Platform Adapter implementing TestPlatform contract with auto-switching StatefulMockEngine."""
+    """MIL Platform Adapter implementing TestPlatform contract with MATLAB Engine & Stateful Mock Engine."""
 
     def __init__(self, config: Optional[Any] = None) -> None:
         super().__init__(config)
@@ -226,13 +226,14 @@ class MatlabMILPlatform(TestPlatform):
     def step(self, duration_ms: float) -> None:
         if not self.is_mocking and self.matlab_engine:
             try:
-                pass
-            except Exception:
+                self.matlab_engine.set_param("EV_Controller", "SimulationCommand", "step", nargout=0)
+            except Exception as e:
+                logger.warning(f"Live MATLAB step failed ({e}). Falling back to Mock Engine.")
                 self.is_mocking = True
 
         if self.mock_engine:
             self.mock_engine.step(duration_ms)
 
 
-# Backwards compatibility alias
+# Backwards compatibility aliases
 MatlabMilAdapter = MatlabMILPlatform

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.14 on win32)" generated="2026-08-20T13:34:51.702446" rpa="false" schemaversion="5">
+<suite id="s1" name="Soc" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\soc.robot">
+<test id="s1-t1" name="EV-BMS-001 Verify SOC at 100%" line="6">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>100</arg>
+<arg>100</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.496696" elapsed="0.000488"/>
+</kw>
+<doc>Verifies SOC calibration at maximum scale (100%).</doc>
+<status status="PASS" start="2026-08-20T13:34:52.495089" elapsed="0.002377"/>
+</test>
+<test id="s1-t2" name="EV-BMS-002 Verify SOC at 80%" line="10">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>80</arg>
+<arg>80</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.498774" elapsed="0.000523"/>
+</kw>
+<doc>Verifies SOC calibration at normal high scale (80%).</doc>
+<status status="PASS" start="2026-08-20T13:34:52.498000" elapsed="0.001618"/>
+</test>
+<test id="s1-t3" name="EV-BMS-003 Verify SOC at 50%" line="14">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>50</arg>
+<arg>50</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.500951" elapsed="0.000339"/>
+</kw>
+<doc>Verifies SOC calibration at mid scale (50%).</doc>
+<status status="PASS" start="2026-08-20T13:34:52.500214" elapsed="0.001456"/>
+</test>
+<test id="s1-t4" name="EV-BMS-004 Verify SOC at 20%" line="18">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>20</arg>
+<arg>20</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.503223" elapsed="0.000385"/>
+</kw>
+<doc>Verifies SOC calibration at low scale (20%).</doc>
+<status status="PASS" start="2026-08-20T13:34:52.502240" elapsed="0.001587"/>
+</test>
+<test id="s1-t5" name="EV-BMS-005 Verify low SOC threshold" line="22">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>20</arg>
+<arg>20</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.505362" elapsed="0.000332"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>10</arg>
+<arg>10</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.506028" elapsed="0.000239"/>
+</kw>
+<doc>Checks warning trigger when SOC is at or below low threshold (20%).</doc>
+<status status="PASS" start="2026-08-20T13:34:52.504270" elapsed="0.002181"/>
+</test>
+<test id="s1-t6" name="EV-BMS-006 Verify critical SOC threshold" line="27">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>5</arg>
+<arg>5</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.507781" elapsed="0.000418"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>3</arg>
+<arg>3</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.508468" elapsed="0.000238"/>
+</kw>
+<doc>Checks warning trigger when SOC is at or below critical threshold (5%).</doc>
+<status status="PASS" start="2026-08-20T13:34:52.506828" elapsed="0.002116"/>
+</test>
+<test id="s1-t7" name="EV-BMS-009 Verify invalid SOC" line="32">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>100</arg>
+<arg>100</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.509746" elapsed="0.000280"/>
+</kw>
+<doc>Asserts out-of-range SOC values are handled appropriately.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.509234" elapsed="0.000980"/>
+</test>
+<test id="s1-t8" name="EV-BMS-010 Verify SOC boundary values" line="36">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>0</arg>
+<arg>0</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.511771" elapsed="0.000600"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>100</arg>
+<arg>100</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.512740" elapsed="0.000442"/>
+</kw>
+<doc>Validates exact boundary values for SOC calculation logic.</doc>
+<status status="PASS" start="2026-08-20T13:34:52.510670" elapsed="0.002845"/>
+</test>
+<test id="s1-t9" name="EV-BMS-011 Verify Out-of-Spec SOC Calibration Failure" line="41">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<msg time="2026-08-20T13:34:52.515845" level="FAIL">Equivalence Assertion Failed: Error 5.0000 exceeds limit 0.5000 (Reference=50.0, Candidate=45.0)</msg>
+<arg>45.0</arg>
+<arg>50.0</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="FAIL" start="2026-08-20T13:34:52.514811" elapsed="0.003630">Equivalence Assertion Failed: Error 5.0000 exceeds limit 0.5000 (Reference=50.0, Candidate=45.0)</status>
+</kw>
+<doc>Negative test scenario: actual SOC (45.0%) deviates from expected (50.0%) beyond 0.5% tolerance.</doc>
+<status status="FAIL" start="2026-08-20T13:34:52.513884" elapsed="0.004974">Equivalence Assertion Failed: Error 5.0000 exceeds limit 0.5000 (Reference=50.0, Candidate=45.0)</status>
+</test>
+<doc>BMS State of Charge (SOC) validation tests.</doc>
+<status status="FAIL" start="2026-08-20T13:34:51.708299" elapsed="0.811255"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Soc" id="s1" pass="8" fail="1" skip="0">Soc</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
