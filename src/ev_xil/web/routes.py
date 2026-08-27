@@ -561,6 +561,12 @@ def run_robot_suite(request: Request) -> RobotRunResponse:
             f"--junit-xml={str(_RESULTS_DIR / 'pytest_results.xml')}",
         ]
 
+    # Prepare environment with src/ directory on PYTHONPATH so the subprocess can import ev_xil
+    import os
+    env = os.environ.copy()
+    src_dir = str(_ROOT_DIR / "src")
+    env["PYTHONPATH"] = f"{src_dir}{os.pathsep}{env.get('PYTHONPATH', '')}".strip(os.pathsep)
+
     try:
         result = subprocess.run(
             cmd,
@@ -568,6 +574,7 @@ def run_robot_suite(request: Request) -> RobotRunResponse:
             text=True,
             timeout=120,
             cwd=str(_ROOT_DIR),
+            env=env,
         )
         stdout_combined = (result.stdout or "") + (result.stderr or "")
         success = result.returncode == 0
