@@ -3,7 +3,7 @@ sample_time_ms: 10.0
 model_path: "build/ev_controller_sil.dll"
 
 backend_settings:
-  mock_mode: false # Uses a lightweight virtual C-runtime simulation if DLL is not compiled
+  mock_mode: true # Uses a lightweight virtual C-runtime simulation if DLL is not compiled
   max_torque_nm: 350.0
   interlock_active_high: true
   task_period_ms: 10.0

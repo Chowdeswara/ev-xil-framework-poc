@@ -1,0 +1,2159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.14 on win32)" generated="2026-08-26T15:39:23.761103" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot">
+<suite id="s1-s1" name="Soc" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\soc.robot">
+<test id="s1-s1-t1" name="EV-BMS-001 Verify SOC at 100%" line="6">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>100</arg>
+<arg>100</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.303345" elapsed="0.000879"/>
+</kw>
+<doc>Verifies SOC calibration at maximum scale (100%).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.301752" elapsed="0.002910"/>
+</test>
+<test id="s1-s1-t2" name="EV-BMS-002 Verify SOC at 80%" line="10">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>80</arg>
+<arg>80</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.306155" elapsed="0.000296"/>
+</kw>
+<doc>Verifies SOC calibration at normal high scale (80%).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.305462" elapsed="0.001338"/>
+</test>
+<test id="s1-s1-t3" name="EV-BMS-003 Verify SOC at 50%" line="14">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>50</arg>
+<arg>50</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.308258" elapsed="0.000283"/>
+</kw>
+<doc>Verifies SOC calibration at mid scale (50%).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.307559" elapsed="0.001633"/>
+</test>
+<test id="s1-s1-t4" name="EV-BMS-004 Verify SOC at 20%" line="18">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>20</arg>
+<arg>20</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.311016" elapsed="0.000447"/>
+</kw>
+<doc>Verifies SOC calibration at low scale (20%).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.310188" elapsed="0.001762"/>
+</test>
+<test id="s1-s1-t5" name="EV-BMS-005 Verify low SOC threshold" line="22">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>20</arg>
+<arg>20</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.313999" elapsed="0.000367"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>10</arg>
+<arg>10</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.314829" elapsed="0.000340"/>
+</kw>
+<doc>Checks warning trigger when SOC is at or below low threshold (20%).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.312892" elapsed="0.002756"/>
+</test>
+<test id="s1-s1-t6" name="EV-BMS-006 Verify critical SOC threshold" line="27">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>5</arg>
+<arg>5</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.317506" elapsed="0.000419"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>3</arg>
+<arg>3</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.318319" elapsed="0.000250"/>
+</kw>
+<doc>Checks warning trigger when SOC is at or below critical threshold (5%).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.316465" elapsed="0.002483"/>
+</test>
+<test id="s1-s1-t7" name="EV-BMS-009 Verify invalid SOC" line="32">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>100</arg>
+<arg>100</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.320542" elapsed="0.000284"/>
+</kw>
+<doc>Asserts out-of-range SOC values are handled appropriately.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.319832" elapsed="0.001357"/>
+</test>
+<test id="s1-s1-t8" name="EV-BMS-010 Verify SOC boundary values" line="36">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>0</arg>
+<arg>0</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.323020" elapsed="0.000268"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>100</arg>
+<arg>100</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.323647" elapsed="0.000246"/>
+</kw>
+<doc>Validates exact boundary values for SOC calculation logic.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.321996" elapsed="0.002253"/>
+</test>
+<test id="s1-s1-t9" name="EV-BMS-011 Verify Out-of-Spec SOC Calibration Failure" line="41">
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>49.5</arg>
+<arg>50.0</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.325870" elapsed="0.000266"/>
+</kw>
+<doc>Negative test scenario: actual SOC (45.0%) deviates from expected (50.0%) beyond 0.5% tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.325026" elapsed="0.001439"/>
+</test>
+<doc>BMS State of Charge (SOC) validation tests.</doc>
+<status status="PASS" start="2026-08-26T15:39:23.855875" elapsed="0.471878"/>
+</suite>
+<suite id="s1-s2" name="Temperature" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\temperature.robot">
+<test id="s1-s2-t1" name="EV-BMS-016 Verify normal temperature" line="6">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.345021" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.345252" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.336743" elapsed="0.008648"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>25</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.345795" elapsed="0.000286"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.346462" elapsed="0.000229"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.347337" level="INFO">${dtc} = None</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.347013" elapsed="0.000381"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.348108" level="INFO">${fault} = 0.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.347794" elapsed="0.000366"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>None</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.348524" elapsed="0.000941"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.351164" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.349982" elapsed="0.001425"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.352730" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.352414" elapsed="0.000422"/>
+</kw>
+<doc>Checks system behavior at room/nominal operating temperature (25 degrees C).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.335566" elapsed="0.017766"/>
+</test>
+<test id="s1-s2-t2" name="EV-BMS-017 Verify high-temperature detection" line="17">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.359953" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.360188" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.355426" elapsed="0.004915"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>60</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.360795" elapsed="0.000271"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.361425" elapsed="0.000256"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.362291" level="INFO">${dtc} = DTC_BAT_002_OVER_TEMP</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.362012" elapsed="0.000328"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.362983" level="INFO">${fault} = 1.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.362655" elapsed="0.000389"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>DTC_BAT_002_OVER_TEMP</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.363349" elapsed="0.000586"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.364713" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.364250" elapsed="0.000575"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.365688" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.365330" elapsed="0.000502"/>
+</kw>
+<doc>Ensures system flags high thermal levels exceeding safety threshold (&gt; 55 degrees C).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.354400" elapsed="0.011932"/>
+</test>
+<test id="s1-s2-t3" name="EV-BMS-018 Verify low-temperature detection" line="28">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.372372" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.372647" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.368211" elapsed="0.004565"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>-30</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.373505" elapsed="0.000402"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.374248" elapsed="0.000223"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.375061" level="INFO">${dtc} = DTC_BAT_003_UNDER_TEMP</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.374772" elapsed="0.000337"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.375711" level="INFO">${fault} = 1.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.375414" elapsed="0.000346"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>DTC_BAT_003_UNDER_TEMP</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.376072" elapsed="0.000576"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.377515" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.376997" elapsed="0.000660"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.378235" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.377999" elapsed="0.000326"/>
+</kw>
+<doc>Ensures system flags low thermal levels below safety threshold (&lt; -25 degrees C).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.367276" elapsed="0.011447"/>
+</test>
+<test id="s1-s2-t4" name="EV-BMS-019 Verify temperature sensor failure" line="39">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.383321" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.383493" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.380435" elapsed="0.003160"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>25</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.383984" elapsed="0.000262"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Fault_Injected</arg>
+<arg>1</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.384573" elapsed="0.000231"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.385108" elapsed="0.000198"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.385867" level="INFO">${dtc} = DTC_BAT_001_SENSOR_FAILURE</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.385598" elapsed="0.000318"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.386504" level="INFO">${fault} = 1.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.386243" elapsed="0.000316"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>DTC_BAT_001_SENSOR_FAILURE</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.386877" elapsed="0.000579"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.388459" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.387770" elapsed="0.000806"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.389364" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.389016" elapsed="0.000454"/>
+</kw>
+<doc>Injects sensor failure flag and verifies diagnostic code reporting.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.379589" elapsed="0.010431"/>
+</test>
+<test id="s1-s2-t5" name="EV-BMS-020 Verify thermal protection" line="51">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.397674" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.397942" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.392543" elapsed="0.005569"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>SOC</arg>
+<arg>80</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.398663" elapsed="0.000387"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>52</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.399490" elapsed="0.000330"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Is_Charging</arg>
+<arg>1</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.400237" elapsed="0.000330"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.401057" elapsed="0.000415"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.402260" level="INFO">${dtc} = DTC_CHG_001_OVER_TEMP_CHARGE</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.401901" elapsed="0.000420"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.403016" level="INFO">${fault} = 1.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.402681" elapsed="0.000399"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>DTC_CHG_001_OVER_TEMP_CHARGE</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.403593" elapsed="0.000848"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.405334" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.404815" elapsed="0.000630"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.406253" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.406015" elapsed="0.000332"/>
+</kw>
+<doc>Verifies that battery charging halts if a thermal error state exists.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.391142" elapsed="0.015525"/>
+</test>
+<doc>BMS Temperature and Thermal Safety verification tests.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.329461" elapsed="0.078339"/>
+</suite>
+<suite id="s1-s3" name="Temperature New" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\temperature_new.robot">
+<test id="s1-s3-t1" name="EV-BMS-016 Verify normal temperature" line="6">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.421224" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.421482" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.416722" elapsed="0.004922"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>25</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.422139" elapsed="0.000306"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.422817" elapsed="0.000378"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.424307" level="INFO">${dtc} = None</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.423941" elapsed="0.000419"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.425024" level="INFO">${fault} = 0.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.424724" elapsed="0.000350"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>None</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.425432" elapsed="0.000632"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.427084" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.426434" elapsed="0.000802"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.428260" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.427862" elapsed="0.000549"/>
+</kw>
+<doc>Checks system behavior at room/nominal operating temperature (25 degrees C).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.415672" elapsed="0.013259"/>
+</test>
+<test id="s1-s3-t2" name="EV-BMS-017 Verify high-temperature detection" line="17">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.436223" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.436477" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.431591" elapsed="0.005026"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>60</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.437111" elapsed="0.000375"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.437850" elapsed="0.000271"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.438769" level="INFO">${dtc} = DTC_BAT_002_OVER_TEMP</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.438449" elapsed="0.000370"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.439592" level="INFO">${fault} = 1.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.439297" elapsed="0.000344"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>DTC_BAT_002_OVER_TEMP</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.439986" elapsed="0.000650"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.441449" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.440969" elapsed="0.000588"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.442144" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.441896" elapsed="0.000342"/>
+</kw>
+<doc>Ensures system flags high thermal levels exceeding safety threshold (&gt; 55 degrees C).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.430094" elapsed="0.012472"/>
+</test>
+<test id="s1-s3-t3" name="EV-BMS-018 Verify low-temperature detection" line="28">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.448451" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.448803" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.444822" elapsed="0.004190"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>-30</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.449621" elapsed="0.000500"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.450549" elapsed="0.000270"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.451512" level="INFO">${dtc} = DTC_BAT_003_UNDER_TEMP</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.451199" elapsed="0.000397"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.452464" level="INFO">${fault} = 1.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.451970" elapsed="0.000578"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>DTC_BAT_003_UNDER_TEMP</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.453078" elapsed="0.001247"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.455834" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.454919" elapsed="0.001160"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.457485" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.457092" elapsed="0.000557"/>
+</kw>
+<doc>Ensures system flags low thermal levels below safety threshold (&lt; -25 degrees C).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.443410" elapsed="0.014679"/>
+</test>
+<test id="s1-s3-t4" name="EV-BMS-019 Verify temperature sensor failure" line="39">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.462681" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.462839" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.459741" elapsed="0.003203"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>25</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.463360" elapsed="0.000299"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Fault_Injected</arg>
+<arg>1</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.464007" elapsed="0.000423"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.464964" elapsed="0.000296"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.465885" level="INFO">${dtc} = DTC_BAT_001_SENSOR_FAILURE</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.465586" elapsed="0.000348"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.466530" level="INFO">${fault} = 1.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.466250" elapsed="0.000328"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>DTC_BAT_001_SENSOR_FAILURE</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.466892" elapsed="0.000582"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.468266" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.467792" elapsed="0.000601"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.468950" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.468704" elapsed="0.000334"/>
+</kw>
+<doc>Injects sensor failure flag and verifies diagnostic code reporting.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.458866" elapsed="0.010794"/>
+</test>
+<test id="s1-s3-t5" name="EV-BMS-020 Verify thermal protection" line="51">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.475643" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.475923" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.471828" elapsed="0.004281"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>SOC</arg>
+<arg>80</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.476613" elapsed="0.000344"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Temperature</arg>
+<arg>52</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.477708" elapsed="0.000568"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Is_Charging</arg>
+<arg>1</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.478726" elapsed="0.000237"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.479492" elapsed="0.000219"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.480297" level="INFO">${dtc} = DTC_CHG_001_OVER_TEMP_CHARGE</msg>
+<var>${dtc}</var>
+<arg>DTC</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.480012" elapsed="0.000336"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.480955" level="INFO">${fault} = 1.0</msg>
+<var>${fault}</var>
+<arg>Battery_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.480682" elapsed="0.000322"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${dtc}</arg>
+<arg>DTC_CHG_001_OVER_TEMP_CHARGE</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.481326" elapsed="0.000560"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-08-26T15:39:24.482673" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${fault}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.482216" elapsed="0.000565"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.483493" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.483261" elapsed="0.000321"/>
+</kw>
+<doc>Verifies that battery charging halts if a thermal error state exists.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.470718" elapsed="0.013178"/>
+</test>
+<doc>BMS Temperature and Thermal Safety verification tests (New).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.409787" elapsed="0.075315"/>
+</suite>
+<suite id="s1-s4" name="Test Equivalence" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\test_equivalence.robot">
+<test id="s1-s4-t1" name="TC-EQ-001 MIL vs SIL Back-to-Back Equivalence Verification" line="6">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.496957" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.497214" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.493315" elapsed="0.004095"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.498417" elapsed="0.000439"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>50.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.499316" elapsed="0.000359"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.500030" elapsed="0.000231"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.500852" level="INFO">${mil_trq} = 175.0</msg>
+<var>${mil_trq}</var>
+<arg>Motor_Torque</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.500565" elapsed="0.000336"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.501463" level="INFO">${mil_spd} = 35.0</msg>
+<var>${mil_spd}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.501205" elapsed="0.000305"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.502061" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.501823" elapsed="0.000324"/>
+</kw>
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.505882" level="INFO">Using Virtual C-Runtime simulation for SIL execution.</msg>
+<msg time="2026-08-26T15:39:24.506202" level="INFO">Connected and started XiL execution profile: SIL</msg>
+<arg>SIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.502432" elapsed="0.003972"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.506863" elapsed="0.000341"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>50.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.507826" elapsed="0.000257"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.508402" elapsed="0.000245"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.509253" level="INFO">${sil_trq} = 175.0</msg>
+<var>${sil_trq}</var>
+<arg>Motor_Torque</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.508952" elapsed="0.000353"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.509873" level="INFO">${sil_spd} = 35.0</msg>
+<var>${sil_spd}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.509608" elapsed="0.000312"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.510458" level="INFO">Disconnected profile: SIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.510220" elapsed="0.000328"/>
+</kw>
+<kw name="Verify Signal Equivalence" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.511257" level="INFO">Equivalence verified: val_a=175.0, val_b=175.0, absolute_error=0.00000 &lt;= tolerance=0.5</msg>
+<arg>${mil_trq}</arg>
+<arg>${sil_trq}</arg>
+<arg>0.5</arg>
+<doc>Asserts ISO 26262 Back-to-Back numerical equivalence between two values.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.510841" elapsed="0.000507"/>
+</kw>
+<kw name="Verify Signal Equivalence" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.512122" level="INFO">Equivalence verified: val_a=35.0, val_b=35.0, absolute_error=0.00000 &lt;= tolerance=0.5</msg>
+<arg>${mil_spd}</arg>
+<arg>${sil_spd}</arg>
+<arg>0.5</arg>
+<doc>Asserts ISO 26262 Back-to-Back numerical equivalence between two values.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.511692" elapsed="0.000531"/>
+</kw>
+<doc>Executes TC_EV_001 on MIL and SIL and asserts |MIL_Speed - SIL_Speed| &lt;= 0.5 km/h.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.492458" elapsed="0.020143"/>
+</test>
+<test id="s1-s4-t2" name="TC-EQ-002 Cross-Level Equivalence Verification Across MIL SIL HIL VIL" line="30">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.518288" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.518492" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.514302" elapsed="0.004474"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.519641" elapsed="0.000312"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>50.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.520374" elapsed="0.000302"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.521019" elapsed="0.000220"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.521860" level="INFO">${mil_spd} = 35.0</msg>
+<var>${mil_spd}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.521571" elapsed="0.000341"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.522464" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.522215" elapsed="0.000336"/>
+</kw>
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.525847" level="INFO">Using Virtual C-Runtime simulation for SIL execution.</msg>
+<msg time="2026-08-26T15:39:24.526040" level="INFO">Connected and started XiL execution profile: SIL</msg>
+<arg>SIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.522846" elapsed="0.003300"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.526536" elapsed="0.000283"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>50.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.527188" elapsed="0.000248"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.527917" elapsed="0.000240"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.528728" level="INFO">${sil_spd} = 35.0</msg>
+<var>${sil_spd}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.528444" elapsed="0.000332"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.529311" level="INFO">Disconnected profile: SIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.529072" elapsed="0.000329"/>
+</kw>
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.540067" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.541197" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.541360" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.529685" elapsed="0.011786"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.542020" elapsed="0.000314"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>50.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.542738" elapsed="0.000288"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.543506" elapsed="0.000357"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.544725" level="INFO">${hil_spd} = 35.0</msg>
+<var>${hil_spd}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.544319" elapsed="0.000467"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.547609" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.547781" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.545465" elapsed="0.002421"/>
+</kw>
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.555406" level="INFO">Initializing Vehicle-in-the-Loop (VIL) Real Vehicle Environment &amp; Telemetry Gateway.</msg>
+<msg time="2026-08-26T15:39:24.555656" level="INFO">Connected and started XiL execution profile: VIL</msg>
+<arg>VIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.548351" elapsed="0.007479"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.556262" elapsed="0.000310"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>50.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.556895" elapsed="0.000238"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.557476" elapsed="0.000236"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.558439" level="INFO">${vil_spd} = 35.0</msg>
+<var>${vil_spd}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.558039" elapsed="0.000454"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.559180" level="INFO">Disconnected profile: VIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.558855" elapsed="0.000494"/>
+</kw>
+<kw name="Verify Cross Level Equivalence" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.560820" level="INFO">==========================================================================
+      Cross-Level Result Comparison Report: Vehicle_Speed
+==========================================================================
+ Level  | Measured Value | Reference Pair | Delta Error | Limit | Verdict
+--------------------------------------------------------------------------
+ MIL    |          35.00 | -              | -           | -     | BASE
+ SIL    |          35.00 | -              | -           | -     | BASE
+ HIL    |          35.00 | -              | -           | -     | BASE
+ VIL    |          35.00 | -              | -           | -     | BASE
+--------------------------------------------------------------------------
+ PAIR   | MIL vs SIL     | 35.00 -&gt; 35.00 |      0.0000 |  0.50 | EQUIVALENT
+ PAIR   | SIL vs HIL     | 35.00 -&gt; 35.00 |      0.0000 |  0.50 | EQUIVALENT
+ PAIR   | HIL vs VIL     | 35.00 -&gt; 35.00 |      0.0000 |  0.50 | EQUIVALENT
+--------------------------------------------------------------------------
+ Cross-Level Equivalence Verdict: PASSED (ALL LEVELS CONSISTENT)
+==========================================================================</msg>
+<arg>Vehicle_Speed</arg>
+<arg>${mil_spd}</arg>
+<arg>${sil_spd}</arg>
+<arg>${hil_spd}</arg>
+<arg>${vil_spd}</arg>
+<arg>0.5</arg>
+<doc>Verifies multi-level cross-level equivalence across MIL, SIL, HIL, VIL.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.560076" elapsed="0.001509"/>
+</kw>
+<doc>Executes 50% throttle across all 4 profiles and verifies cross-level numerical consistency.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.513352" elapsed="0.049006"/>
+</test>
+<doc>ISO 26262 Back-to-Back (B2B) Equivalence &amp; Cross-Level Matrix Robot Suite.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.487114" elapsed="0.076270"/>
+</suite>
+<suite id="s1-s5" name="Test Hil" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\test_hil.robot">
+<test id="s1-s5-t1" name="TC-HIL-001 Verify Multi-Port MAPort to NetworkPort Acceleration Demand" line="9">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:24.583361" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.584537" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.584743" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.571214" elapsed="0.013689"/>
+</kw>
+<kw name="Write Maport Signal" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>80.0</arg>
+<doc>Writes a value to Speedgoat Plant IO MAPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.585513" elapsed="0.000312"/>
+</kw>
+<kw name="Write Maport Signal" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to Speedgoat Plant IO MAPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.586275" elapsed="0.000357"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.587020" elapsed="0.000267"/>
+</kw>
+<kw name="Read Network Port Signal" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.587904" level="INFO">${trq_can} = 280.0</msg>
+<var>${trq_can}</var>
+<arg>TorqueRequest_CAN</arg>
+<doc>Reads a signal from CAN bus NetworkPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.587618" elapsed="0.000335"/>
+</kw>
+<kw name="Read Network Port Signal" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.588643" level="INFO">${spd_can} = 56.0</msg>
+<var>${spd_can}</var>
+<arg>VehicleSpeed_CAN</arg>
+<doc>Reads a signal from CAN bus NetworkPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.588339" elapsed="0.000353"/>
+</kw>
+<kw name="Read Ecum Port Signal" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.589269" level="INFO">${ecu_st} = 2.0</msg>
+<var>${ecu_st}</var>
+<arg>ECU_State</arg>
+<doc>Reads diagnostic state from ECUMPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.589007" elapsed="0.000310"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${trq_can}</arg>
+<arg>280.0</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.589620" elapsed="0.000352"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${ecu_st}</arg>
+<arg>2.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.590563" elapsed="0.000457"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:24.594095" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.594326" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.592025" elapsed="0.002446"/>
+</kw>
+<doc>Verifies 80% throttle demand across Speedgoat MAPort -&gt; CAN NetworkPort (280.0 Nm, ECU_State RUNNING).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.570261" elapsed="0.024531"/>
+</test>
+<test id="s1-s5-t2" name="TC-HIL-002 Verify Interlock Trip Electrical Fault Injection and DTC Registration" line="20">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:24.612656" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.613934" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.614206" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.596475" elapsed="0.017940"/>
+</kw>
+<kw name="Write Maport Signal" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>80.0</arg>
+<doc>Writes a value to Speedgoat Plant IO MAPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.615182" elapsed="0.000359"/>
+</kw>
+<kw name="Write Maport Signal" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to Speedgoat Plant IO MAPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.616006" elapsed="0.000312"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.616708" elapsed="0.000299"/>
+</kw>
+<kw name="Inject Hardware Fault" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>OPEN_CIRCUIT</arg>
+<doc>Injects hardware/communication fault (OPEN_CIRCUIT, COMM_TIMEOUT, STUCK_AT).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.618022" elapsed="0.000626"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.619068" elapsed="0.000260"/>
+</kw>
+<kw name="Read Network Port Signal" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.620215" level="INFO">${trq_can} = 0.0</msg>
+<var>${trq_can}</var>
+<arg>TorqueRequest_CAN</arg>
+<doc>Reads a signal from CAN bus NetworkPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.619665" elapsed="0.000649"/>
+</kw>
+<kw name="Read Ecum Port Signal" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.621290" level="INFO">${ecu_st} = 0.0</msg>
+<var>${ecu_st}</var>
+<arg>ECU_State</arg>
+<doc>Reads diagnostic state from ECUMPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.620908" elapsed="0.000538"/>
+</kw>
+<kw name="Read Ecum Port Signal" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.622537" level="INFO">${dtc} = 53249.0</msg>
+<var>${dtc}</var>
+<arg>ECU_DiagnosticStatus</arg>
+<doc>Reads diagnostic state from ECUMPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.622069" elapsed="0.000544"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${trq_can}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.623778" elapsed="0.000464"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${ecu_st}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.624817" elapsed="0.000483"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${dtc}</arg>
+<arg>53249.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.625730" elapsed="0.000425"/>
+</kw>
+<kw name="Clear Hardware Faults" owner="EVXiLLibrary">
+<doc>Clears all active hardware/bus fault conditions.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.626822" elapsed="0.000308"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:24.629325" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.629493" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.627664" elapsed="0.001927"/>
+</kw>
+<doc>Injects OPEN_CIRCUIT fault on MAPort HV Interlock pin and asserts DTC 0xD001 registration.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.595742" elapsed="0.034093"/>
+</test>
+<test id="s1-s5-t3" name="TC-HIL-003 Verify CAN Bus Communication Timeout Fault Shutdown" line="35">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:24.646860" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.648021" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.648184" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.631582" elapsed="0.016723"/>
+</kw>
+<kw name="Write Maport Signal" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>80.0</arg>
+<doc>Writes a value to Speedgoat Plant IO MAPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.648960" elapsed="0.000320"/>
+</kw>
+<kw name="Write Maport Signal" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to Speedgoat Plant IO MAPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.649599" elapsed="0.000223"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.650106" elapsed="0.000212"/>
+</kw>
+<kw name="Inject Hardware Fault" owner="EVXiLLibrary">
+<arg>CAN_BUS</arg>
+<arg>COMM_TIMEOUT</arg>
+<doc>Injects hardware/communication fault (OPEN_CIRCUIT, COMM_TIMEOUT, STUCK_AT).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.650599" elapsed="0.000242"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.651271" elapsed="0.000320"/>
+</kw>
+<kw name="Read Network Port Signal" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.652363" level="INFO">${trq_can} = 0.0</msg>
+<var>${trq_can}</var>
+<arg>TorqueRequest_CAN</arg>
+<doc>Reads a signal from CAN bus NetworkPort on HIL profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.651962" elapsed="0.000473"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.653548" level="INFO">${flt_st} = 1.0</msg>
+<var>${flt_st}</var>
+<arg>fault_status</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.653049" elapsed="0.000576"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${trq_can}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.654175" elapsed="0.000498"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${flt_st}</arg>
+<arg>1.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.655337" elapsed="0.000404"/>
+</kw>
+<kw name="Clear Hardware Faults" owner="EVXiLLibrary">
+<doc>Clears all active hardware/bus fault conditions.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.656211" elapsed="0.000264"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:24.658585" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.658786" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.656952" elapsed="0.001960"/>
+</kw>
+<doc>Injects COMM_TIMEOUT fault simulating lost CAN heartbeat cable disconnect.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.630662" elapsed="0.028566"/>
+</test>
+<doc>HIL (Hardware-in-the-Loop) ASAM XIL 2.1 Multi-Port &amp; Fault Injection Robot Suite.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.564849" elapsed="0.095779"/>
+</suite>
+<suite id="s1-s6" name="Test Mil" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\test_mil.robot">
+<test id="s1-s6-t1" name="TC-MIL-001 Verify 50% Throttle Acceleration Demand" line="9">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:24.672016" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.672165" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.669176" elapsed="0.003103"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.672830" elapsed="0.000415"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>50.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.673659" elapsed="0.000266"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.674243" elapsed="0.000206"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.675074" level="INFO">${torque} = 175.0</msg>
+<var>${torque}</var>
+<arg>Motor_Torque</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.674765" elapsed="0.000357"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.675732" level="INFO">${speed} = 35.0</msg>
+<var>${speed}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.675448" elapsed="0.000347"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${torque}</arg>
+<arg>175.0</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.676114" elapsed="0.000289"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:24.677041" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.676817" elapsed="0.000321"/>
+</kw>
+<doc>Verifies motor torque response (175.0 Nm) under 50% pedal acceleration demand.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.667971" elapsed="0.009355"/>
+</test>
+<test id="s1-s6-t2" name="TC-MIL-002 Verify HV Interlock Safety Shutdown" line="18">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:24.681871" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.682033" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.679051" elapsed="0.003095"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>80.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.683086" elapsed="0.000524"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>0.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.684161" elapsed="0.000509"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.685213" elapsed="0.000353"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.686677" level="INFO">${torque} = 0.0</msg>
+<var>${torque}</var>
+<arg>Motor_Torque</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.686154" elapsed="0.000574"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${torque}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.687182" elapsed="0.000335"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:24.688219" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.687956" elapsed="0.000357"/>
+</kw>
+<doc>Verifies torque is immediately cut to 0.0 Nm when HV interlock is tripped.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.678136" elapsed="0.010390"/>
+</test>
+<test id="s1-s6-t3" name="TC-MIL-003 Verify Zero Throttle Coasting" line="26">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:24.692823" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:24.692979" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.689965" elapsed="0.003133"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.693599" elapsed="0.000295"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>0.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.694260" elapsed="0.000371"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.695011" elapsed="0.000220"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.695946" level="INFO">${torque} = 0.0</msg>
+<var>${torque}</var>
+<arg>Motor_Torque</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.695570" elapsed="0.000449"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${torque}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.696457" elapsed="0.000453"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:24.697911" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.697534" elapsed="0.000547"/>
+</kw>
+<doc>Verifies zero torque output when pedal input is at 0%.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.689274" elapsed="0.009078"/>
+</test>
+<doc>MIL (Model-in-the-Loop) Execution Profile Robot Framework Suite.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.662719" elapsed="0.036979"/>
+</suite>
+<suite id="s1-s7" name="Test Restbus" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\test_restbus.robot">
+<test id="s1-s7-t1" name="TC-RB-001 Verify HIL Restbus Keepalive" line="6">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.731877" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.733678" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.734098" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.714131" elapsed="0.020314"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>50</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.735356" elapsed="0.000445"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.736911" level="INFO">${ecu_st} = 2.0</msg>
+<var>${ecu_st}</var>
+<arg>ECU_State</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.736392" elapsed="0.000626"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.738095" level="INFO">${dtc} = 0.0</msg>
+<var>${dtc}</var>
+<arg>ECU_DiagnosticStatus</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.737608" elapsed="0.000572"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${ecu_st}</arg>
+<arg>2.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.738724" elapsed="0.000507"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${dtc}</arg>
+<arg>0.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.739898" elapsed="0.000630"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.743777" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.744051" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.741267" elapsed="0.002943"/>
+</kw>
+<doc>VCU stays in normal operational mode (ECU_State = 2.0) when restbus is broadcasting.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.712500" elapsed="0.032839"/>
+</test>
+<test id="s1-s7-t2" name="TC-RB-002 Verify BMS Communication Timeout Fault Injection" line="16">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.766811" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.768475" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.768772" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.749367" elapsed="0.019654"/>
+</kw>
+<kw name="Inject Restbus Timeout" owner="EVXiLLibrary">
+<arg>BMS</arg>
+<arg>1</arg>
+<doc>Injects restbus timeout (drops frames) for the specified node (BMS, MCU, TCU, ABS, Cluster).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.769894" elapsed="0.000605"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>50</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.771090" elapsed="0.000543"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.773031" level="INFO">${ecu_st} = 3.0</msg>
+<var>${ecu_st}</var>
+<arg>ECU_State</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.772460" elapsed="0.000673"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.774601" level="INFO">${dtc} = 81.0</msg>
+<var>${dtc}</var>
+<arg>ECU_DiagnosticStatus</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.773850" elapsed="0.000889"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${ecu_st}</arg>
+<arg>3.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.775488" elapsed="0.000841"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${dtc}</arg>
+<arg>81.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.777131" elapsed="0.000758"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.782598" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.783049" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.778516" elapsed="0.005038"/>
+</kw>
+<doc>VCU transitions to limp mode (ECU_State = 3.0) and logs DTC 81.0 when BMS timeout is active.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.746914" elapsed="0.037663"/>
+</test>
+<test id="s1-s7-t3" name="TC-RB-003 Verify MCU Communication Timeout Fault Injection" line="27">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.803424" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.804894" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.805145" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.787274" elapsed="0.018062"/>
+</kw>
+<kw name="Inject Restbus Timeout" owner="EVXiLLibrary">
+<arg>MCU</arg>
+<arg>1</arg>
+<doc>Injects restbus timeout (drops frames) for the specified node (BMS, MCU, TCU, ABS, Cluster).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.806210" elapsed="0.001851"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>50</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.809415" elapsed="0.000888"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.812366" level="INFO">${ecu_st} = 3.0</msg>
+<var>${ecu_st}</var>
+<arg>ECU_State</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.811750" elapsed="0.000720"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.813666" level="INFO">${dtc} = 81.0</msg>
+<var>${dtc}</var>
+<arg>ECU_DiagnosticStatus</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.813180" elapsed="0.000572"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${ecu_st}</arg>
+<arg>3.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.814270" elapsed="0.000528"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${dtc}</arg>
+<arg>81.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.815334" elapsed="0.000450"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.817914" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.818168" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.816291" elapsed="0.002059"/>
+</kw>
+<doc>VCU transitions to limp mode (ECU_State = 3.0) and logs DTC 81.0 when MCU timeout is active.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.785799" elapsed="0.033118"/>
+</test>
+<test id="s1-s7-t4" name="TC-RB-004 Verify TCU Communication Timeout Fault Injection" line="38">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.852046" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.853966" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.854226" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.822186" elapsed="0.032241"/>
+</kw>
+<kw name="Inject Restbus Timeout" owner="EVXiLLibrary">
+<arg>TCU</arg>
+<arg>1</arg>
+<doc>Injects restbus timeout (drops frames) for the specified node (BMS, MCU, TCU, ABS, Cluster).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.855186" elapsed="0.000403"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>50</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.856083" elapsed="0.000335"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.857234" level="INFO">${ecu_st} = 3.0</msg>
+<var>${ecu_st}</var>
+<arg>ECU_State</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.856840" elapsed="0.000466"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.858243" level="INFO">${dtc} = 81.0</msg>
+<var>${dtc}</var>
+<arg>ECU_DiagnosticStatus</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.857850" elapsed="0.000465"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${ecu_st}</arg>
+<arg>3.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.858766" elapsed="0.000434"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${dtc}</arg>
+<arg>81.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.859772" elapsed="0.000580"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.863643" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.864033" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.861002" elapsed="0.003307"/>
+</kw>
+<doc>VCU transitions to limp mode (ECU_State = 3.0) and logs DTC 81.0 when TCU timeout is active.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.820306" elapsed="0.044737"/>
+</test>
+<test id="s1-s7-t5" name="TC-RB-005 Verify BMS CRC Checksum Fault Injection" line="49">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.885302" level="INFO">Using ASAMXILMockPort engine for Multi-Port HIL execution.</msg>
+<msg time="2026-08-26T15:39:24.889617" level="INFO">Restbus simulation engine started.</msg>
+<msg time="2026-08-26T15:39:24.890052" level="INFO">Connected and started XiL execution profile: HIL</msg>
+<arg>HIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.867396" elapsed="0.022837"/>
+</kw>
+<kw name="Inject Restbus Crc Counter Fault" owner="EVXiLLibrary">
+<arg>BMS</arg>
+<arg>1</arg>
+<doc>Injects rolling counter/CRC fault for the specified node.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.891474" elapsed="0.000354"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>50</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.892259" elapsed="0.000259"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.893260" level="INFO">${ecu_st} = 3.0</msg>
+<var>${ecu_st}</var>
+<arg>ECU_State</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.892853" elapsed="0.000488"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.894232" level="INFO">${dtc} = 81.0</msg>
+<var>${dtc}</var>
+<arg>ECU_DiagnosticStatus</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.893816" elapsed="0.000514"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${ecu_st}</arg>
+<arg>3.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.894901" elapsed="0.000444"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${dtc}</arg>
+<arg>81.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.895792" elapsed="0.000395"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.900869" level="INFO">Restbus simulation engine stopped.</msg>
+<msg time="2026-08-26T15:39:24.901304" level="INFO">Disconnected profile: HIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.897683" elapsed="0.003862"/>
+</kw>
+<doc>VCU transitions to limp mode (ECU_State = 3.0) and logs DTC 81.0 when BMS CRC/checksum corruption is active.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.866148" elapsed="0.037700"/>
+</test>
+<doc>HIL Restbus Simulation and Fault Injection validation tests.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.702123" elapsed="0.205785"/>
+</suite>
+<suite id="s1-s8" name="Test Sil" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\test_sil.robot">
+<test id="s1-s8-t1" name="TC-SIL-001 Verify Production C-Code 50% Throttle Acceleration Demand" line="9">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:24.935663" level="INFO">Using Virtual C-Runtime simulation for SIL execution.</msg>
+<msg time="2026-08-26T15:39:24.935980" level="INFO">Connected and started XiL execution profile: SIL</msg>
+<arg>SIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.924089" elapsed="0.012123"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.936881" elapsed="0.000430"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>50.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.937805" elapsed="0.000340"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.938718" elapsed="0.000561"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.940712" level="INFO">${torque} = 175.0</msg>
+<var>${torque}</var>
+<arg>Motor_Torque</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.939941" elapsed="0.001001"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:24.943195" level="INFO">${speed} = 35.0</msg>
+<var>${speed}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.942053" elapsed="0.001316"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${torque}</arg>
+<arg>175.0</arg>
+<arg>0.5</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.945140" elapsed="0.000713"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:24.947646" level="INFO">Disconnected profile: SIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.947165" elapsed="0.000672"/>
+</kw>
+<doc>Verifies C-code execution (.dll / .exe) returns 175.0 Nm torque under 50% pedal demand.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.922257" elapsed="0.025988"/>
+</test>
+<test id="s1-s8-t2" name="TC-SIL-002 Verify Production C-Code Interlock Safety Shutdown" line="18">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:24.964327" level="INFO">Using Virtual C-Runtime simulation for SIL execution.</msg>
+<msg time="2026-08-26T15:39:24.964664" level="INFO">Connected and started XiL execution profile: SIL</msg>
+<arg>SIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:24.952335" elapsed="0.012562"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>80.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.966055" elapsed="0.003045"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>0.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.970770" elapsed="0.001643"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.978608" elapsed="0.000631"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.000493" level="INFO">${torque} = 0.0</msg>
+<var>${torque}</var>
+<arg>Motor_Torque</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.999548" elapsed="0.001083"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${torque}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.004725" elapsed="0.001966"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:25.011615" level="INFO">Disconnected profile: SIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.011039" elapsed="0.000781"/>
+</kw>
+<doc>Verifies C-code cuts torque to 0.0 Nm when HV interlock is tripped.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.950058" elapsed="0.062865"/>
+</test>
+<test id="s1-s8-t3" name="TC-SIL-003 Verify Production C-Code Zero Throttle Demand" line="26">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:25.103601" level="INFO">Using Virtual C-Runtime simulation for SIL execution.</msg>
+<msg time="2026-08-26T15:39:25.104669" level="INFO">Connected and started XiL execution profile: SIL</msg>
+<arg>SIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.093706" elapsed="0.011290"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.109263" elapsed="0.000996"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>0.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.117329" elapsed="0.000772"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.126557" elapsed="0.000582"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.131994" level="INFO">${torque} = 0.0</msg>
+<var>${torque}</var>
+<arg>Motor_Torque</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.130775" elapsed="0.001409"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${torque}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.135108" elapsed="0.000705"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:25.137139" level="INFO">Disconnected profile: SIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.136689" elapsed="0.000648"/>
+</kw>
+<doc>Verifies zero torque output when pedal input is at 0%.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.081339" elapsed="0.056430"/>
+</test>
+<doc>SIL (Software-in-the-Loop) Production C-Code Robot Framework Suite.</doc>
+<status status="PASS" start="2026-08-26T15:39:24.913569" elapsed="0.225837"/>
+</suite>
+<suite id="s1-s9" name="Test Vil" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\test_vil.robot">
+<test id="s1-s9-t1" name="TC-VIL-001 Verify Real-Vehicle Acceptance Target Speed and Zero Diagnostics Faults" line="9">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary" type="SETUP">
+<msg time="2026-08-26T15:39:25.229349" level="INFO">Initializing Vehicle-in-the-Loop (VIL) Real Vehicle Environment &amp; Telemetry Gateway.</msg>
+<msg time="2026-08-26T15:39:25.230031" level="INFO">Connected and started XiL execution profile: VIL</msg>
+<arg>VIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.218000" elapsed="0.012784"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Brake_Interlock</arg>
+<arg>1.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.238310" elapsed="0.000581"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>Throttle_Input</arg>
+<arg>90.0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.254391" elapsed="0.001592"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>200.0</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.274306" elapsed="0.004261"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.291157" level="INFO">${speed} = 63.0</msg>
+<var>${speed}</var>
+<arg>Vehicle_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.290117" elapsed="0.001133"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.292325" level="INFO">${gnss_speed} = 63.0</msg>
+<var>${gnss_speed}</var>
+<arg>GNSS_Speed</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.291889" elapsed="0.000509"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.299933" level="INFO">${diag_flt} = 0.0</msg>
+<var>${diag_flt}</var>
+<arg>Diagnostic_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.299395" elapsed="0.000639"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.304030" level="INFO">${trq_flt} = 0.0</msg>
+<var>${trq_flt}</var>
+<arg>Torque_Fault</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.303435" elapsed="0.000677"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${diag_flt}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.310239" elapsed="0.001655"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${trq_flt}</arg>
+<arg>0.0</arg>
+<arg>0.1</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.326707" elapsed="0.001330"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary" type="TEARDOWN">
+<msg time="2026-08-26T15:39:25.332562" level="INFO">Disconnected profile: VIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.332109" elapsed="0.000776"/>
+</kw>
+<doc>Verifies 90% throttle demand on roller dyno reaches &gt;= 50.0 km/h with zero diagnostic faults.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.188050" elapsed="0.148384"/>
+</test>
+<doc>VIL (Vehicle-in-the-Loop) Chassis Dyno &amp; Diagnostic Telemetry Robot Suite.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.158650" elapsed="0.217463"/>
+</suite>
+<suite id="s1-s10" name="Voltage" source="C:\Chow\chowdi___\AI\ev-xil-framework\tests\robot\voltage.robot">
+<test id="s1-s10-t1" name="EV-BMS-011 Verify normal cell voltage" line="6">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.451908" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:25.452169" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.445897" elapsed="0.006434"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>SOC</arg>
+<arg>50</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.452920" elapsed="0.000459"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.456026" elapsed="0.000964"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.458335" level="INFO">${volts} = 3.6</msg>
+<var>${volts}</var>
+<arg>Cell_Voltage</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.457864" elapsed="0.000555"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${volts}</arg>
+<arg>3.6</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.458977" elapsed="0.001700"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.461619" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.461245" elapsed="0.000531"/>
+</kw>
+<doc>Ensures calculated cell voltage matches expected value at 50% SOC (nominal).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.434923" elapsed="0.027623"/>
+</test>
+<test id="s1-s10-t2" name="EV-BMS-012 Verify minimum cell voltage" line="15">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.470481" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:25.470692" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.466232" elapsed="0.004898"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>SOC</arg>
+<arg>0</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.472221" elapsed="0.000414"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.473139" elapsed="0.000334"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.474457" level="INFO">${volts} = 3.0</msg>
+<var>${volts}</var>
+<arg>Cell_Voltage</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.473940" elapsed="0.000573"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${volts}</arg>
+<arg>3.0</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.474913" elapsed="0.000307"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.476032" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.475684" elapsed="0.000488"/>
+</kw>
+<doc>Ensures cell voltage maps correctly at minimum safe capacity (0% SOC).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.464845" elapsed="0.011756"/>
+</test>
+<test id="s1-s10-t3" name="EV-BMS-013 Verify maximum cell voltage" line="24">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.485106" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:25.485285" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.479924" elapsed="0.005468"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>SOC</arg>
+<arg>100</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.485893" elapsed="0.000448"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.486867" elapsed="0.000315"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.487809" level="INFO">${volts} = 4.2</msg>
+<var>${volts}</var>
+<arg>Cell_Voltage</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.487531" elapsed="0.000327"/>
+</kw>
+<kw name="Verify Signal Within Tolerance" owner="EVXiLLibrary">
+<arg>${volts}</arg>
+<arg>4.2</arg>
+<arg>0.01</arg>
+<doc>Asserts that actual signal value matches expected value within tolerance.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.488322" elapsed="0.000508"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.489542" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.489284" elapsed="0.000388"/>
+</kw>
+<doc>Ensures cell voltage maps correctly at maximum capacity (100% SOC).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.478298" elapsed="0.011712"/>
+</test>
+<test id="s1-s10-t4" name="EV-BMS-014 Verify over-voltage detection" line="33">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.496514" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:25.496851" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.492639" elapsed="0.004405"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>SOC</arg>
+<arg>105</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.497579" elapsed="0.000355"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.498401" elapsed="0.000387"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.499866" level="INFO">${status} = OVER_VOLTAGE</msg>
+<var>${status}</var>
+<arg>Pack_Voltage_Status</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.499522" elapsed="0.000395"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status}</arg>
+<arg>OVER_VOLTAGE</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.500251" elapsed="0.000559"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.501303" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.501091" elapsed="0.000295"/>
+</kw>
+<doc>Verifies pack triggers warning status when cell voltage exceeds safe limit.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.491501" elapsed="0.010216"/>
+</test>
+<test id="s1-s10-t5" name="EV-BMS-015 Verify under-voltage detection" line="42">
+<kw name="Connect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.507624" level="INFO">Using Stateful Mock Engine for MIL execution.</msg>
+<msg time="2026-08-26T15:39:25.507858" level="INFO">Connected and started XiL execution profile: MIL</msg>
+<arg>MIL</arg>
+<doc>Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL).</doc>
+<status status="PASS" start="2026-08-26T15:39:25.503638" elapsed="0.004357"/>
+</kw>
+<kw name="Write Signal Input" owner="EVXiLLibrary">
+<arg>SOC</arg>
+<arg>-15</arg>
+<doc>Writes a value to a logical input signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.508498" elapsed="0.000345"/>
+</kw>
+<kw name="Step Simulation Time" owner="EVXiLLibrary">
+<arg>10</arg>
+<doc>Steps the simulation forward by specified milliseconds.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.509319" elapsed="0.000374"/>
+</kw>
+<kw name="Read Signal Output" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.510691" level="INFO">${status} = UNDER_VOLTAGE</msg>
+<var>${status}</var>
+<arg>Pack_Voltage_Status</arg>
+<doc>Reads the current value of a logical signal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.510226" elapsed="0.000544"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status}</arg>
+<arg>UNDER_VOLTAGE</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.511207" elapsed="0.000786"/>
+</kw>
+<kw name="Disconnect Execution Profile" owner="EVXiLLibrary">
+<msg time="2026-08-26T15:39:25.512566" level="INFO">Disconnected profile: MIL</msg>
+<doc>Disconnects and stops the current execution profile.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.512327" elapsed="0.000327"/>
+</kw>
+<doc>Verifies pack triggers warning status when cell voltage drops below safe limit.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.502655" elapsed="0.010469"/>
+</test>
+<doc>BMS Cell and Pack Voltage validation tests.</doc>
+<status status="PASS" start="2026-08-26T15:39:25.415810" elapsed="0.098185"/>
+</suite>
+<status status="PASS" start="2026-08-26T15:39:23.765013" elapsed="1.752054"/>
+</suite>
+<statistics>
+<total>
+<stat pass="41" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Robot" id="s1" pass="41" fail="0" skip="0">Robot</stat>
+<stat name="Soc" id="s1-s1" pass="9" fail="0" skip="0">Robot.Soc</stat>
+<stat name="Temperature" id="s1-s2" pass="5" fail="0" skip="0">Robot.Temperature</stat>
+<stat name="Temperature New" id="s1-s3" pass="5" fail="0" skip="0">Robot.Temperature New</stat>
+<stat name="Test Equivalence" id="s1-s4" pass="2" fail="0" skip="0">Robot.Test Equivalence</stat>
+<stat name="Test Hil" id="s1-s5" pass="3" fail="0" skip="0">Robot.Test Hil</stat>
+<stat name="Test Mil" id="s1-s6" pass="3" fail="0" skip="0">Robot.Test Mil</stat>
+<stat name="Test Restbus" id="s1-s7" pass="5" fail="0" skip="0">Robot.Test Restbus</stat>
+<stat name="Test Sil" id="s1-s8" pass="3" fail="0" skip="0">Robot.Test Sil</stat>
+<stat name="Test Vil" id="s1-s9" pass="1" fail="0" skip="0">Robot.Test Vil</stat>
+<stat name="Voltage" id="s1-s10" pass="5" fail="0" skip="0">Robot.Voltage</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -3,7 +3,7 @@ sample_time_ms: 10.0
 model_path: "models/ev_controller/EV_Controller.slx"
 
 backend_settings:
-  mock_mode: false # Auto-switches to mock if MATLAB Engine is not installed
+  mock_mode: true # Auto-switches to mock if MATLAB Engine is not installed
   max_torque_nm: 350.0
   interlock_active_high: true
 

@@ -10,6 +10,39 @@ backend_settings:
   max_torque_nm: 350.0
   communication_delay_ms: 2.0
   interlock_active_high: true
+  restbus:
+    cycle_period_ms: 20.0
+    nodes:
+      ABS:
+        cycle_period_ms: 10.0
+        signals:
+          ESP_Status: 1.0
+          WheelSpeed_FL: 0.0
+          WheelSpeed_FR: 0.0
+          Brake_Plausibility: 1.0
+      BMS:
+        cycle_period_ms: 20.0
+        signals:
+          SOC: 80.0
+          Voltage: 350.0
+          Temperature: 25.0
+      MCU:
+        cycle_period_ms: 20.0
+        signals:
+          Motor_Temp: 35.0
+          Inverter_Temp: 30.0
+          Actual_Torque: 0.0
+      TCU:
+        cycle_period_ms: 50.0
+        signals:
+          Selected_Gear: 1.0
+          Clutch_Pressure: 0.0
+      Cluster:
+        cycle_period_ms: 100.0
+        signals:
+          Odometer: 12500.0
+          DriveMode: 1.0
+          AmbientTemp: 25.0
 
 maport:
   Throttle_Input: "Speedgoat/Plant/Pedal_Position"

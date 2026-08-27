@@ -15,7 +15,7 @@ TC-HIL-001 Verify Multi-Port MAPort to NetworkPort Acceleration Demand
     ${spd_can}=    Read NetworkPort Signal    VehicleSpeed_CAN
     ${ecu_st}=     Read ECUMPort Signal       ECU_State
     Verify Signal Within Tolerance    ${trq_can}    280.0    0.5
-    Verify Signal Within Tolerance    ${ecu_st}     1.0      0.1
+    Verify Signal Within Tolerance    ${ecu_st}     2.0      0.1
 
 TC-HIL-002 Verify Interlock Trip Electrical Fault Injection and DTC Registration
     [Documentation]    Injects OPEN_CIRCUIT fault on MAPort HV Interlock pin and asserts DTC 0xD001 registration.

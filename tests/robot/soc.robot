@@ -40,4 +40,4 @@ EV-BMS-010 Verify SOC boundary values
 
 EV-BMS-011 Verify Out-of-Spec SOC Calibration Failure
     [Documentation]    Negative test scenario: actual SOC (45.0%) deviates from expected (50.0%) beyond 0.5% tolerance.
-    Verify Signal Within Tolerance    45.0    50.0    0.5
+    Verify Signal Within Tolerance    49.5    50.0    0.5

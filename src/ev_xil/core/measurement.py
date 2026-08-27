@@ -5,12 +5,12 @@ import time
 
 
 class SignalRecorder:
-    """Records timeseries signal data (timestamps and float values) during test execution."""
+    """Records timeseries signal data (timestamps and any values) during test execution."""
 
     def __init__(self) -> None:
         self.is_recording: bool = False
         self.timestamps: List[float] = []
-        self.signals: Dict[str, List[float]] = {}
+        self.signals: Dict[str, List[Any]] = {}
         self._start_time: float = 0.0
 
     @property
@@ -30,7 +30,7 @@ class SignalRecorder:
         """Stops recording."""
         self.is_recording = False
 
-    def record(self, timestamp: float, signal_name: str, value: float) -> None:
+    def record(self, timestamp: float, signal_name: str, value: Any) -> None:
         """Records a single signal value at a given timestamp (ms or s)."""
         if not self.is_recording:
             return
@@ -40,9 +40,15 @@ class SignalRecorder:
 
         if signal_name not in self.signals:
             self.signals[signal_name] = []
-        self.signals[signal_name].append(float(value))
+            
+        try:
+            val = float(value)
+        except (ValueError, TypeError):
+            val = value
+            
+        self.signals[signal_name].append(val)
 
-    def record_sample(self, timestamp: float, sample_dict: Dict[str, float]) -> None:
+    def record_sample(self, timestamp: float, sample_dict: Dict[str, Any]) -> None:
         """Records multiple signal values at a single timestamp."""
         if not self.is_recording:
             return
@@ -51,10 +57,14 @@ class SignalRecorder:
         for sig_name, val in sample_dict.items():
             if sig_name not in self.signals:
                 self.signals[sig_name] = []
-            self.signals[sig_name].append(float(val))
+            try:
+                val_typed = float(val)
+            except (ValueError, TypeError):
+                val_typed = val
+            self.signals[sig_name].append(val_typed)
 
-    def get_signal_trace(self, signal_name: str) -> List[float]:
-        """Returns recorded float series for a given signal."""
+    def get_signal_trace(self, signal_name: str) -> List[Any]:
+        """Returns recorded series for a given signal."""
         return self.signals.get(signal_name, [])
 
     def get_timestamps(self) -> List[float]:

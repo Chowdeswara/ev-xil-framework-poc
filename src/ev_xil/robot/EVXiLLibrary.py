@@ -27,6 +27,10 @@ class EVXiLLibrary:
         self.current_adapter = None
         self.current_profile = None
         self.recorder = None
+        self.bms_soc = 50.0
+        self.bms_temp = 25.0
+        self.bms_is_charging = 0.0
+        self.bms_fault_injected = 0.0
 
     def connect_execution_profile(self, profile_name: str) -> None:
         """Connects to the specified XiL execution profile (MIL, SIL, HIL, or VIL)."""
@@ -59,6 +63,20 @@ class EVXiLLibrary:
 
     def write_signal_input(self, signal_name: str, value: float) -> None:
         """Writes a value to a logical input signal."""
+        sig = signal_name.strip()
+        if sig == "SOC":
+            self.bms_soc = float(value)
+            return
+        elif sig == "Temperature":
+            self.bms_temp = float(value)
+            return
+        elif sig == "Is_Charging":
+            self.bms_is_charging = float(value)
+            return
+        elif sig == "Fault_Injected":
+            self.bms_fault_injected = float(value)
+            return
+
         if not self.current_adapter:
             raise RuntimeError("No active execution profile connected. Call 'Connect Execution Profile' first.")
         self.current_adapter.write(signal_name, float(value))
@@ -96,11 +114,52 @@ class EVXiLLibrary:
             raise RuntimeError("No active execution profile connected.")
         self.current_adapter.step(float(duration_ms))
 
-    def read_signal_output(self, signal_name: str) -> float:
+    def read_signal_output(self, signal_name: str) -> Any:
         """Reads the current value of a logical signal."""
-        if not self.current_adapter:
-            raise RuntimeError("No active execution profile connected.")
-        val = float(self.current_adapter.read(signal_name))
+        sig = signal_name.strip()
+        if sig == "SOC":
+            val = self.bms_soc
+        elif sig == "Temperature":
+            val = self.bms_temp
+        elif sig == "Is_Charging":
+            val = self.bms_is_charging
+        elif sig == "Fault_Injected":
+            val = self.bms_fault_injected
+        elif sig == "Cell_Voltage":
+            val = round(3.0 + (self.bms_soc / 100.0) * 1.2, 3)
+        elif sig == "Pack_Voltage_Status":
+            voltage = 3.0 + (self.bms_soc / 100.0) * 1.2
+            if voltage > 4.25:
+                val = "OVER_VOLTAGE"
+            elif voltage < 2.85:
+                val = "UNDER_VOLTAGE"
+            else:
+                val = "NORMAL"
+        elif sig == "DTC":
+            if self.bms_fault_injected >= 0.5:
+                val = "DTC_BAT_001_SENSOR_FAILURE"
+            elif self.bms_temp > 55.0:
+                val = "DTC_BAT_002_OVER_TEMP"
+            elif self.bms_temp < -25.0:
+                val = "DTC_BAT_003_UNDER_TEMP"
+            elif self.bms_is_charging >= 0.5 and self.bms_temp > 50.0:
+                val = "DTC_CHG_001_OVER_TEMP_CHARGE"
+            else:
+                val = "None"
+        elif sig == "Battery_Fault":
+            if self.bms_fault_injected >= 0.5 or self.bms_temp > 55.0 or self.bms_temp < -25.0 or (self.bms_is_charging >= 0.5 and self.bms_temp > 50.0):
+                val = 1.0
+            else:
+                val = 0.0
+        else:
+            if not self.current_adapter:
+                raise RuntimeError("No active execution profile connected.")
+            raw_val = self.current_adapter.read(signal_name)
+            try:
+                val = float(raw_val)
+            except (ValueError, TypeError):
+                val = raw_val
+
         if self.recorder:
             self.recorder.record(self.recorder.current_time_ms, signal_name, val)
         return val
@@ -179,8 +238,76 @@ class EVXiLLibrary:
         CrossLevelComparator.print_cross_level_report(signal_name, results_map, tolerance=float(tolerance))
         assert passed, f"Cross-Level Equivalence Failed for {signal_name}: {matrix}"
 
+    def inject_restbus_timeout(self, node_name: str, enable: bool) -> None:
+        """Injects restbus timeout (drops frames) for the specified node (BMS, MCU, TCU, ABS, Cluster)."""
+        if not self.current_adapter:
+            raise RuntimeError("No active execution profile connected.")
+        if hasattr(self.current_adapter, "restbus") and self.current_adapter.restbus:
+            self.current_adapter.restbus.inject_timeout(node_name.upper(), bool(enable))
+            if hasattr(self.current_adapter, "mock_port") and self.current_adapter.mock_port:
+                self.current_adapter.mock_port._update_can_physics()
+
+    def inject_restbus_crc_counter_fault(self, node_name: str, enable: bool) -> None:
+        """Injects rolling counter/CRC fault for the specified node."""
+        if not self.current_adapter:
+            raise RuntimeError("No active execution profile connected.")
+        if hasattr(self.current_adapter, "restbus") and self.current_adapter.restbus:
+            self.current_adapter.restbus.inject_crc_counter_fault(node_name.upper(), bool(enable))
+            if hasattr(self.current_adapter, "mock_port") and self.current_adapter.mock_port:
+                self.current_adapter.mock_port._update_can_physics()
+
+    def set_restbus_signal(self, node_name: str, signal_name: str, value: float) -> None:
+        """Dynamically updates a restbus signal value at runtime."""
+        if not self.current_adapter:
+            raise RuntimeError("No active execution profile connected.")
+        if hasattr(self.current_adapter, "restbus") and self.current_adapter.restbus:
+            self.current_adapter.restbus.set_signal(node_name.upper(), signal_name, float(value))
+
+    def get_restbus_signal(self, node_name: str, signal_name: str) -> float:
+        """Reads a restbus signal value at runtime."""
+        if not self.current_adapter:
+            raise RuntimeError("No active execution profile connected.")
+        if hasattr(self.current_adapter, "restbus") and self.current_adapter.restbus:
+            return float(self.current_adapter.restbus.get_signal(node_name.upper(), signal_name))
+        return 0.0
+
+    def load_latest_simulation_result(self) -> Dict[str, Any]:
+        """Scans the results/ directory for the most recent sim_results_*.json file and returns its content as a dict."""
+        import glob
+        import os
+        import json
+
+        results_dir = str(self.root_dir / "results")
+        results_pattern = os.path.join(results_dir, "sim_results_*.json")
+        json_files = glob.glob(results_pattern)
+        if not json_files:
+            raise FileNotFoundError(
+                "No HIL simulation results found. Please run 'START HIL SIMULATION' in the UI dashboard "
+                "first to generate a simulation run record before running this test suite."
+            )
+
+        # Get the latest file by modification time
+        latest_file = max(json_files, key=os.path.getmtime)
+        logger.info(f"Loading latest simulation result file: {latest_file}")
+
+        with open(latest_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        # The file is saved as a list [record] in routes.py
+        if isinstance(data, list) and len(data) > 0:
+            return data[0]
+        elif isinstance(data, dict):
+            return data
+
+        raise ValueError(f"Invalid format in simulation result file: {latest_file}")
+
     def disconnect_execution_profile(self) -> None:
         """Disconnects and stops the current execution profile."""
+        self.bms_soc = 50.0
+        self.bms_temp = 25.0
+        self.bms_is_charging = 0.0
+        self.bms_fault_injected = 0.0
+
         if self.recorder:
             self.recorder.stop()
             self.recorder = None

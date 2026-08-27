@@ -5,6 +5,7 @@ import struct
 import logging
 from typing import Dict, Any, Optional, List
 from ev_xil.core.platform import TestPlatform, PlatformAdapter
+from ev_xil.adapters.hil.restbus import RestbusSimulator
 
 logger = logging.getLogger(__name__)
 
@@ -68,6 +69,7 @@ class ASAMXILMockPort:
             "motor_speed_rpm": 0.0,
             "fault_status": 0.0,
         }
+        self.restbus: Optional[RestbusSimulator] = None
         self._pack_can_tx_0x200(0.0, 0.0)
 
     def inject_fault(self, signal_name: str, fault_type: str, value: float = 0.0) -> None:
@@ -147,6 +149,7 @@ class ASAMXILMockPort:
         struct.pack_into(">HH", self.can_tx_0x200, 0, t_int, s_int)
 
     def _update_can_physics(self) -> None:
+
         if "COMM_TIMEOUT" in [f["type"] for f in self.active_faults.values()]:
             self.signals["torque"] = 0.0
             self.signals["Motor_Torque"] = 0.0
@@ -182,9 +185,27 @@ class ASAMXILMockPort:
             fault_code = 1.0
         else:
             t_val = (max(0.0, min(100.0, throttle)) / 100.0) * self.max_torque_nm
-            ecu_st = 1.0  # RUNNING
-            dtc = 0.0  # NO_DTC
-            fault_code = 0.0
+            
+            # Check restbus status (BMS, MCU, TCU)
+            restbus_fault = False
+            if hasattr(self, "restbus") and self.restbus:
+                bms_timeout = self.restbus.timeouts.get("BMS", False)
+                bms_crc = self.restbus.crc_faults.get("BMS", False)
+                mcu_timeout = self.restbus.timeouts.get("MCU", False)
+                mcu_crc = self.restbus.crc_faults.get("MCU", False)
+                tcu_timeout = self.restbus.timeouts.get("TCU", False)
+                tcu_crc = self.restbus.crc_faults.get("TCU", False)
+                if bms_timeout or bms_crc or mcu_timeout or mcu_crc or tcu_timeout or tcu_crc:
+                    restbus_fault = True
+
+            if restbus_fault:
+                ecu_st = 3.0  # Limp/Fault
+                dtc = 81.0  # DTC 0x51
+                fault_code = 1.0
+            else:
+                ecu_st = 2.0 if (hasattr(self, "restbus") and self.restbus) else 1.0
+                dtc = 0.0
+                fault_code = 0.0
 
         self.signals["torque"] = t_val
         self.signals["Motor_Torque"] = t_val
@@ -230,6 +251,7 @@ class MatlabHilAdapter(TestPlatform):
 
         self.can_bus: Optional[Any] = None
         self.mock_port: Optional[ASAMXILMockPort] = None
+        self.restbus: Optional[RestbusSimulator] = None
         self.is_mocking: bool = True
         self.is_running: bool = False
 
@@ -239,6 +261,8 @@ class MatlabHilAdapter(TestPlatform):
             try:
                 logger.info(f"Connecting to hardware CAN bus ({self.can_bustype})...")
                 self.can_bus = can.interface.Bus(bustype=self.can_bustype, channel=0, bitrate=500000)
+                self.restbus = RestbusSimulator(self.backend_settings, self.can_bus)
+                self.restbus.start()
                 self.is_mocking = False
                 self.is_connected = True
                 return
@@ -251,6 +275,9 @@ class MatlabHilAdapter(TestPlatform):
             interlock_active_high=self.interlock_active_high,
             communication_delay_ms=self.comm_delay_ms,
         )
+        self.restbus = RestbusSimulator(self.backend_settings, None)
+        self.restbus.start()
+        self.mock_port.restbus = self.restbus
         self.is_mocking = True
         self.is_connected = True
 
@@ -269,6 +296,12 @@ class MatlabHilAdapter(TestPlatform):
 
     def disconnect(self) -> None:
         self.stop()
+        if self.restbus:
+            try:
+                self.restbus.stop()
+            except Exception:
+                pass
+            self.restbus = None
         if self.can_bus:
             try:
                 self.can_bus.shutdown()
@@ -314,6 +347,15 @@ class MatlabHilAdapter(TestPlatform):
         self.write_signal(resolved, value)
 
     def read_signal(self, signal_name: str) -> float:
+        # Route restbus signal queries (e.g. BMS/SOC, MCU/Motor_Temp)
+        if "/" in signal_name:
+            parts = signal_name.split("/", 1)
+            if parts[0] in ("BMS", "ABS", "Cluster", "MCU", "TCU") and self.restbus:
+                try:
+                    return float(self.restbus.get_signal(parts[0], parts[1]))
+                except (ValueError, TypeError):
+                    return self.restbus.get_signal(parts[0], parts[1])
+
         resolved = self.resolve_signal(signal_name) if hasattr(self, "resolve_signal") else signal_name
         if self.is_mocking and self.mock_port:
             val = self.mock_port.get_signal(signal_name)
@@ -323,6 +365,13 @@ class MatlabHilAdapter(TestPlatform):
         return 0.0
 
     def write_signal(self, signal_name: str, value: float) -> None:
+        # Route restbus signal updates (e.g. BMS/SOC, MCU/Motor_Temp)
+        if "/" in signal_name:
+            parts = signal_name.split("/", 1)
+            if parts[0] in ("BMS", "ABS", "Cluster", "MCU", "TCU") and self.restbus:
+                self.restbus.set_signal(parts[0], parts[1], value)
+                return
+
         resolved = self.resolve_signal(signal_name) if hasattr(self, "resolve_signal") else signal_name
         if self.is_mocking and self.mock_port:
             self.mock_port.set_signal(signal_name, value)
