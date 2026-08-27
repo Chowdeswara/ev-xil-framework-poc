@@ -272,23 +272,29 @@ class EVXiLLibrary:
         return 0.0
 
     def load_latest_simulation_result(self) -> Dict[str, Any]:
-        """Scans the results/ directory for the most recent sim_results_*.json file and returns its content as a dict."""
+        """Returns the parsed JSON content of the latest simulation run."""
         import glob
         import os
         import json
 
         results_dir = str(self.root_dir / "results")
-        results_pattern = os.path.join(results_dir, "sim_results_*.json")
-        json_files = glob.glob(results_pattern)
-        if not json_files:
-            raise FileNotFoundError(
-                "No HIL simulation results found. Please run 'START HIL SIMULATION' in the UI dashboard "
-                "first to generate a simulation run record before running this test suite."
-            )
+        static_file = os.path.join(results_dir, "sim_results.json")
+        
+        # If static file exists, use it directly
+        if os.path.exists(static_file):
+            latest_file = static_file
+        else:
+            # Fallback to searching timestamped files
+            results_pattern = os.path.join(results_dir, "sim_results_*.json")
+            json_files = glob.glob(results_pattern)
+            if not json_files:
+                raise FileNotFoundError(
+                    "No HIL simulation results found. Please run 'START HIL SIMULATION' in the UI dashboard "
+                    "first to generate a simulation run record before running this test suite."
+                )
+            latest_file = max(json_files, key=os.path.getmtime)
 
-        # Get the latest file by modification time
-        latest_file = max(json_files, key=os.path.getmtime)
-        logger.info(f"Loading latest simulation result file: {latest_file}")
+        logger.info(f"Loading simulation result file: {latest_file}")
 
         with open(latest_file, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -300,6 +306,7 @@ class EVXiLLibrary:
             return data
 
         raise ValueError(f"Invalid format in simulation result file: {latest_file}")
+
 
     def disconnect_execution_profile(self) -> None:
         """Disconnects and stops the current execution profile."""

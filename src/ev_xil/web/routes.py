@@ -76,7 +76,7 @@ def _generate_simulation_reports(request: SimulationRequest, response: Simulatio
 
         # 1. Generate JSON result file for test aggregation
         sim_name = f"HIL Live Simulation (Throttle: {request.throttle_pct}%, Fault: {request.fault_type})"
-        report_filename = f"sim_report_{timestamp_str}.html"
+        report_filename = "sim_report.html"
         report_url = f"{base_url}/api/results/sim_reports/{report_filename}"
 
         # Get final telemetry values safely
@@ -114,7 +114,7 @@ def _generate_simulation_reports(request: SimulationRequest, response: Simulatio
 
         # Write JSON record to _RESULTS_DIR
         _RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-        json_filename = f"sim_results_{timestamp_str}.json"
+        json_filename = "sim_results.json"
         json_path = _RESULTS_DIR / json_filename
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump([json_record], f, indent=2)
@@ -658,6 +658,8 @@ async def get_test_results() -> TestResultsResponse:
 
     # Scan all JSON result files in results/
     json_files = list(_RESULTS_DIR.glob("*.json"))
+    # Filter out legacy timestamped simulation results to keep the dashboard log history clean and size-bounded
+    json_files = [f for f in json_files if not f.name.startswith("sim_results_")]
     logger.info(f"[GET /api/test-results] Found {len(json_files)} result file(s).")
 
     for json_file in json_files:
