@@ -15,7 +15,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Optional
 
-from fastapi import APIRouter, HTTPException, BackgroundTasks
+from fastapi import APIRouter, HTTPException, BackgroundTasks, Request
 from fastapi.responses import FileResponse, JSONResponse
 
 from ev_xil.web.models import (
@@ -63,7 +63,7 @@ async def health_check() -> HealthResponse:
     )
 
 
-def _generate_simulation_reports(request: SimulationRequest, response: SimulationResponse) -> str:
+def _generate_simulation_reports(request: SimulationRequest, response: SimulationResponse, base_url: str) -> str:
     """Generates a styled HTML simulation report and a cached JSON result file.
 
     Returns:
@@ -77,7 +77,7 @@ def _generate_simulation_reports(request: SimulationRequest, response: Simulatio
         # 1. Generate JSON result file for test aggregation
         sim_name = f"HIL Live Simulation (Throttle: {request.throttle_pct}%, Fault: {request.fault_type})"
         report_filename = f"sim_report_{timestamp_str}.html"
-        report_url = f"http://127.0.0.1:8001/api/results/sim_reports/{report_filename}"
+        report_url = f"{base_url}/api/results/sim_reports/{report_filename}"
 
         # Get final telemetry values safely
         final_speed = 0.0
@@ -399,7 +399,7 @@ def _generate_simulation_reports(request: SimulationRequest, response: Simulatio
 # ---------------------------------------------------------------------------
 
 @router.post("/simulate", response_model=SimulationResponse, tags=["Simulation"])
-def simulate(request: SimulationRequest) -> SimulationResponse:
+def simulate(request: SimulationRequest, api_request: Request) -> SimulationResponse:
     """Runs a live EV XiL simulation across the requested profiles.
 
     Accepts signal inputs (throttle, interlock, fault injection, duration) and
@@ -428,7 +428,7 @@ def simulate(request: SimulationRequest) -> SimulationResponse:
         
         # Generate simulation HTML and JSON report files
         if response.success:
-            report_url = _generate_simulation_reports(request, response)
+            report_url = _generate_simulation_reports(request, response, str(api_request.base_url).rstrip("/"))
             response.report_url = report_url
 
         logger.info(
@@ -448,7 +448,7 @@ def simulate(request: SimulationRequest) -> SimulationResponse:
 # POST /api/run-robot-suite
 # ---------------------------------------------------------------------------
 
-def _parse_xml_to_json_report(xml_path: Path, json_path: Path, is_robot: bool) -> None:
+def _parse_xml_to_json_report(xml_path: Path, json_path: Path, is_robot: bool, base_url: str) -> None:
     """Parses test XML outputs (Robot output.xml or Pytest junit-xml) and saves them as standard JSON records."""
     if not xml_path.exists():
         logger.warning(f"Test XML report not found: {xml_path}")
@@ -488,6 +488,7 @@ def _parse_xml_to_json_report(xml_path: Path, json_path: Path, is_robot: bool) -
                     "profile": profile,
                     "timestamp": timestamp,
                     "measurement": None,
+                    "report_url": f"{base_url}/api/results/robot_logs/report.html"
                 })
         else:
             for tc in root.iter("testcase"):
@@ -511,6 +512,7 @@ def _parse_xml_to_json_report(xml_path: Path, json_path: Path, is_robot: bool) -
                     "profile": profile,
                     "timestamp": None,
                     "measurement": None,
+                    "report_url": f"{base_url}/api/results/robot_logs/report.html" if is_robot else f"{base_url}/api/test-results"
                 })
 
         with open(json_path, "w", encoding="utf-8") as f:
@@ -522,7 +524,7 @@ def _parse_xml_to_json_report(xml_path: Path, json_path: Path, is_robot: bool) -
 
 
 @router.post("/run-robot-suite", response_model=RobotRunResponse, tags=["Testing"])
-def run_robot_suite() -> RobotRunResponse:
+def run_robot_suite(request: Request) -> RobotRunResponse:
     """Triggers the Robot Framework EV XiL test suite execution as a subprocess.
 
     Runs robot tests from tests/robot/ directory (if it exists) or falls back
@@ -570,29 +572,33 @@ def run_robot_suite() -> RobotRunResponse:
         stdout_combined = (result.stdout or "") + (result.stderr or "")
         success = result.returncode == 0
 
+        base_url = str(request.base_url).rstrip("/")
+
         # Parse test results XML output into JSON for the UI dashboard
         if use_robot:
             _parse_xml_to_json_report(
                 xml_path=_ROBOT_OUTPUT_DIR / "output.xml",
                 json_path=_RESULTS_DIR / "robot_results.json",
                 is_robot=True,
+                base_url=base_url
             )
         else:
             _parse_xml_to_json_report(
                 xml_path=_RESULTS_DIR / "pytest_results.xml",
                 json_path=_RESULTS_DIR / "pytest_results.json",
                 is_robot=False,
+                base_url=base_url
             )
 
         report_url = ""
         log_url = ""
 
         if use_robot and (_ROBOT_OUTPUT_DIR / "report.html").exists():
-            report_url = f"http://127.0.0.1:8001/api/results/robot_logs/report.html"
-            log_url = f"http://127.0.0.1:8001/api/results/robot_logs/log.html"
+            report_url = f"{base_url}/api/results/robot_logs/report.html"
+            log_url = f"{base_url}/api/results/robot_logs/log.html"
         else:
-            report_url = "http://127.0.0.1:8001/api/test-results"
-            log_url = "http://127.0.0.1:8001/api/test-results"
+            report_url = f"{base_url}/api/test-results"
+            log_url = f"{base_url}/api/test-results"
 
         logger.info(
             f"[POST /api/run-robot-suite] Completed — return_code={result.returncode}, "
