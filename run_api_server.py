@@ -38,23 +38,31 @@ def main():
         )
         sys.exit(1)
 
+    # Dynamically bind host and port from environment variables for cloud deployments (like Render)
+    host = os.environ.get("HOST", "0.0.0.0")
+    port = int(os.environ.get("PORT", 8001))
+    
+    # Disable reload in production to optimize container resources
+    is_prod = os.environ.get("RENDER") is not None
+    reload_enabled = not is_prod
+
     print("=" * 70)
     print("  [EV XiL] Test Automation API Server")
     print("=" * 70)
     print(f"  Root dir : {_ROOT_DIR}")
     print(f"  Src path : {_SRC_DIR}")
-    print(f"  API URL  : http://127.0.0.1:8001")
-    print(f"  Docs     : http://127.0.0.1:8001/docs")
-    print(f"  Health   : http://127.0.0.1:8001/api/health")
+    print(f"  API URL  : http://{host}:{port}")
+    print(f"  Docs     : http://{host}:{port}/docs")
+    print(f"  Health   : http://{host}:{port}/api/health")
     print("=" * 70)
     print()
 
     uvicorn.run(
         "ev_xil.web.app:app",
-        host="127.0.0.1",
-        port=8001,
-        reload=True,
-        reload_dirs=[str(_SRC_DIR)],
+        host=host,
+        port=port,
+        reload=reload_enabled,
+        reload_dirs=[str(_SRC_DIR)] if reload_enabled else None,
         log_level="info",
     )
 
